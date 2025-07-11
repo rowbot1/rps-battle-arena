@@ -223,9 +223,9 @@ Contributions welcome! Please read CONTRIBUTING.md first.
 
 ## 📞 Support
 
-- Documentation: [docs.rpsbattlearena.com]
-- Discord: [discord.gg/rpsbattle]
-- Email: support@rpsbattlearena.com
+- Documentation: [Coming Soon]
+- Discord: [Coming Soon]
+- Email: [Coming Soon]
 
 ---
 
