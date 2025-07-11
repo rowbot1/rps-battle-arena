@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS Arena - Debug</title>
+    <link rel="stylesheet" href="css/multiplayer-styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="main-menu" id="mainMenu">
+            <div class="game-logo">
+                <h1 class="logo-main">RPS ARENA</h1>
+                <p class="logo-subtitle">DEBUG MODE</p>
+            </div>
+            
+            <div style="background: rgba(255,0,0,0.2); padding: 20px; margin: 20px; border-radius: 10px;">
+                <h3>Debug Info:</h3>
+                <p id="debug-info">Loading...</p>
+                <button onclick="testGame()">Test Game Functions</button>
+            </div>
+            
+            <div class="game-modes">
+                <button class="mode-btn quick-match" onclick="testQuickMatch()">
+                    <div class="mode-icon">⚡</div>
+                    <h3>Test Quick Match</h3>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Simple Battle Screen -->
+        <div class="battle-screen hidden" id="battleScreen">
+            <h2>Battle Screen Test</h2>
+            <div class="choice-buttons">
+                <button onclick="testChoice('rock')">🪨 Rock</button>
+                <button onclick="testChoice('paper')">📄 Paper</button>
+                <button onclick="testChoice('scissors')">✂️ Scissors</button>
+            </div>
+            <button onclick="backToMenu()">Back to Menu</button>
+        </div>
+    </div>
+    
+    <script>
+        // Debug script
+        console.log('Debug mode loaded');
+        
+        document.getElementById('debug-info').innerHTML = `
+            Page loaded: ${new Date().toLocaleTimeString()}<br>
+            JavaScript: Working<br>
+            CSS Loaded: ${document.styleSheets.length > 0 ? 'Yes' : 'No'}<br>
+        `;
+        
+        function testGame() {
+            console.log('Testing game functions...');
+            alert('Game functions working! Check console for details.');
+            
+            // Test basic game logic
+            const choices = ['rock', 'paper', 'scissors'];
+            const playerChoice = choices[Math.floor(Math.random() * 3)];
+            const opponentChoice = choices[Math.floor(Math.random() * 3)];
+            
+            console.log('Player:', playerChoice);
+            console.log('Opponent:', opponentChoice);
+            console.log('Result:', determineWinner(playerChoice, opponentChoice));
+        }
+        
+        function determineWinner(p1, p2) {
+            if (p1 === p2) return 'Draw';
+            if ((p1 === 'rock' && p2 === 'scissors') ||
+                (p1 === 'paper' && p2 === 'rock') ||
+                (p1 === 'scissors' && p2 === 'paper')) {
+                return 'Player wins!';
+            }
+            return 'Opponent wins!';
+        }
+        
+        function testQuickMatch() {
+            console.log('Starting quick match...');
+            document.getElementById('mainMenu').classList.add('hidden');
+            document.getElementById('battleScreen').classList.remove('hidden');
+        }
+        
+        function testChoice(choice) {
+            console.log('Player chose:', choice);
+            const opponent = ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)];
+            const result = determineWinner(choice, opponent);
+            alert(`You: ${choice}\nOpponent: ${opponent}\nResult: ${result}`);
+        }
+        
+        function backToMenu() {
+            document.getElementById('battleScreen').classList.add('hidden');
+            document.getElementById('mainMenu').classList.remove('hidden');
+        }
+        
+        // Simple game implementation
+        class SimpleRPSGame {
+            constructor() {
+                this.coins = 1000;
+                this.gems = 100;
+                this.wins = 0;
+                this.losses = 0;
+                console.log('Simple game initialized');
+            }
+            
+            playRound(playerChoice) {
+                const choices = ['rock', 'paper', 'scissors'];
+                const opponentChoice = choices[Math.floor(Math.random() * 3)];
+                
+                if (playerChoice === opponentChoice) {
+                    return { result: 'draw', reward: 5 };
+                }
+                
+                if ((playerChoice === 'rock' && opponentChoice === 'scissors') ||
+                    (playerChoice === 'paper' && opponentChoice === 'rock') ||
+                    (playerChoice === 'scissors' && opponentChoice === 'paper')) {
+                    this.wins++;
+                    this.coins += 50;
+                    return { result: 'win', reward: 50, opponent: opponentChoice };
+                }
+                
+                this.losses++;
+                return { result: 'lose', reward: 0, opponent: opponentChoice };
+            }
+        }
+        
+        window.game = new SimpleRPSGame();
+        console.log('Game ready!', window.game);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "rps-battle-arena",
+  "version": "1.0.0",
+  "description": "Rock Paper Scissors Battle Arena - Passive Income Gaming Platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "live-server --port=8000",
+    "build": "echo 'No build required - vanilla JS!'",
+    "deploy-netlify": "netlify deploy --prod --dir=.",
+    "deploy-vercel": "vercel --prod",
+    "deploy-gh-pages": "gh-pages -d .",
+    "test": "echo 'Add tests here'",
+    "analyze": "echo 'Run performance analysis'"
+  },
+  "keywords": [
+    "game",
+    "rock-paper-scissors",
+    "battle-royale",
+    "multiplayer",
+    "passive-income",
+    "monetization"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "netlify-cli": "^17.0.0",
+    "vercel": "^32.0.0",
+    "gh-pages": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

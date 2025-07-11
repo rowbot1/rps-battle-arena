@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS Battle Arena - Ultimate Rock Paper Scissors Battle Royale</title>
+    <meta name="description" content="Watch 300 warriors battle in the ultimate Rock Paper Scissors arena! Predict the winner and climb the leaderboard.">
+    <link rel="stylesheet" href="css/modern-styles.css">
+    <!-- Google Fonts - removed for local file compatibility -->
+    
+    <!-- Google AdSense placeholder -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with monetization elements -->
+        <header class="main-header">
+            <div class="header-content">
+                <h1 class="logo">RPS BATTLE ARENA</h1>
+                <div class="user-info">
+                    <div class="coins-display">
+                        <span class="coin-icon">🪙</span>
+                        <span class="coin-amount">0</span>
+                    </div>
+                    <button class="premium-btn">Go Premium ⭐</button>
+                    <button class="login-btn">Login</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Battle. Predict. <span class="gradient-text">Dominate.</span></h1>
+                <p class="hero-subtitle">Watch 300 warriors clash in the ultimate Rock Paper Scissors arena</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="stat-number">2.4M+</span>
+                        <span class="stat-label">Battles Fought</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="stat-number">$847K</span>
+                        <span class="stat-label">Prizes Won</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="stat-number">184K</span>
+                        <span class="stat-label">Active Players</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Game Container -->
+        <div class="game-wrapper">
+            <!-- Left Sidebar - Stats & Leaderboard -->
+            <aside class="left-sidebar">
+                <div class="prediction-panel glass-card">
+                    <h2>Make Your Prediction</h2>
+                    <div class="prediction-timer">
+                        <span class="timer-text">Next Round In:</span>
+                        <span class="timer-countdown">30</span>
+                    </div>
+                    <div class="prediction-options">
+                        <button class="predict-btn" data-choice="rock">
+                            <span class="emoji">🪨</span>
+                            <span>Rock</span>
+                            <span class="odds">2.1x</span>
+                        </button>
+                        <button class="predict-btn" data-choice="paper">
+                            <span class="emoji">📄</span>
+                            <span>Paper</span>
+                            <span class="odds">2.3x</span>
+                        </button>
+                        <button class="predict-btn" data-choice="scissors">
+                            <span class="emoji scissors-icon">✂</span>
+                            <span>Scissors</span>
+                            <span class="odds">1.9x</span>
+                        </button>
+                    </div>
+                    <div class="bet-amount">
+                        <label>Bet Amount:</label>
+                        <input type="number" class="bet-input" value="10" min="1" max="1000">
+                        <button class="bet-confirm">Place Bet</button>
+                    </div>
+                </div>
+
+                <div class="stats-panel glass-card">
+                    <h3>Live Stats</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">🪨 Rock:</span>
+                        <span class="stat-value rock-count">100</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">📄 Paper:</span>
+                        <span class="stat-value paper-count">100</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label scissors-label"><span class="scissors-stat-icon">✂</span> Scissors:</span>
+                        <span class="stat-value scissors-count">100</span>
+                    </div>
+                </div>
+
+                <!-- Ad placement -->
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Ad Space</div>
+                </div>
+            </aside>
+
+            <!-- Main Battle Arena -->
+            <main class="battle-arena">
+                <canvas id="gameCanvas"></canvas>
+                <div class="arena-overlay">
+                    <div class="round-info">
+                        <h2 class="round-number">Round 1</h2>
+                        <div class="round-timer">2:00</div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Sidebar - Leaderboard & Chat -->
+            <aside class="right-sidebar">
+                <div class="leaderboard glass-card">
+                    <h3>Top Players</h3>
+                    <div class="leaderboard-tabs">
+                        <button class="tab active" data-period="daily">Daily</button>
+                        <button class="tab" data-period="weekly">Weekly</button>
+                        <button class="tab" data-period="all-time">All Time</button>
+                    </div>
+                    <div class="leaderboard-list">
+                        <div class="leaderboard-item">
+                            <span class="rank">1</span>
+                            <span class="player-name">Player1</span>
+                            <span class="score">12,450</span>
+                        </div>
+                        <!-- More leaderboard items -->
+                    </div>
+                </div>
+
+                <div class="chat-container glass-card">
+                    <h3>Live Chat</h3>
+                    <div class="chat-messages">
+                        <div class="chat-message">
+                            <span class="chat-user">User123:</span>
+                            <span class="chat-text">Rock is dominating!</span>
+                        </div>
+                    </div>
+                    <div class="chat-input-wrapper">
+                        <input type="text" class="chat-input" placeholder="Type a message...">
+                        <button class="chat-send">Send</button>
+                    </div>
+                </div>
+
+                <!-- Ad placement -->
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Ad Space</div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Bottom Banner Ad -->
+        <div class="ad-container ad-banner">
+            <div class="ad-placeholder">Banner Ad Space</div>
+        </div>
+    </div>
+
+    <!-- Premium Modal -->
+    <div class="modal premium-modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Unlock Premium Features</h2>
+            <div class="premium-features">
+                <div class="feature-item">
+                    <span class="feature-icon">🎨</span>
+                    <span>Custom Skins & Effects</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <span>2x Coin Earnings</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🏆</span>
+                    <span>Exclusive Tournaments</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🚫</span>
+                    <span>No Ads</span>
+                </div>
+            </div>
+            <div class="premium-pricing">
+                <button class="price-option">
+                    <span class="duration">1 Month</span>
+                    <span class="price">$4.99</span>
+                </button>
+                <button class="price-option popular">
+                    <span class="duration">6 Months</span>
+                    <span class="price">$19.99</span>
+                    <span class="badge">Save 33%</span>
+                </button>
+                <button class="price-option">
+                    <span class="duration">1 Year</span>
+                    <span class="price">$29.99</span>
+                    <span class="badge">Save 50%</span>
+                </button>
+            </div>
+            <button class="modal-close">×</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/game-engine.js"></script>
+    <script src="js/monetization.js"></script>
+    <script src="js/ui-controller.js"></script>
+    <script src="js/achievements.js"></script>
+    <script src="js/daily-rewards.js"></script>
+    <script src="js/visual-effects.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS Arena - Multiplayer Rock Paper Scissors Battle</title>
+    <meta name="description" content="Battle players worldwide in intense Rock Paper Scissors matches! Climb the ranks, unlock cosmetics, and become the ultimate RPS champion!">
+    <link rel="stylesheet" href="css/multiplayer-styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Main Menu -->
+        <div class="main-menu" id="mainMenu">
+            <div class="game-logo">
+                <h1 class="logo-main">RPS ARENA</h1>
+                <p class="logo-subtitle">MULTIPLAYER BATTLES</p>
+            </div>
+            
+            <div class="player-info-card">
+                <div class="player-avatar">
+                    <img src="img/avatars/default.png" alt="Avatar" id="playerAvatar">
+                    <div class="player-level">LV. 1</div>
+                </div>
+                <div class="player-details">
+                    <h3 id="playerName">Guest Player</h3>
+                    <div class="player-rank">
+                        <img src="img/ranks/bronze.png" alt="Rank" class="rank-icon">
+                        <span>Bronze III</span>
+                    </div>
+                    <div class="player-stats">
+                        <span class="wins">W: 0</span>
+                        <span class="losses">L: 0</span>
+                        <span class="winrate">0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-modes">
+                <button class="mode-btn quick-match" data-mode="quick">
+                    <div class="mode-icon">⚡</div>
+                    <h3>Quick Match</h3>
+                    <p>Jump into battle</p>
+                </button>
+                
+                <button class="mode-btn ranked" data-mode="ranked">
+                    <div class="mode-icon">🏆</div>
+                    <h3>Ranked Battle</h3>
+                    <p>Climb the ladder</p>
+                </button>
+                
+                <button class="mode-btn tournament" data-mode="tournament">
+                    <div class="mode-icon">🎯</div>
+                    <h3>Tournament</h3>
+                    <p>Win big prizes</p>
+                    <div class="entry-fee">Entry: 100 💎</div>
+                </button>
+                
+                <button class="mode-btn battle-royale" data-mode="royale">
+                    <div class="mode-icon">👑</div>
+                    <h3>Battle Royale</h3>
+                    <p>100 players, 1 winner</p>
+                    <div class="countdown">Next in: 5:23</div>
+                </button>
+            </div>
+            
+            <div class="menu-buttons">
+                <button class="menu-btn shop-btn">
+                    <span class="icon">🛍️</span> Shop
+                </button>
+                <button class="menu-btn battlepass-btn">
+                    <span class="icon">🎫</span> Battle Pass
+                </button>
+                <button class="menu-btn leaderboard-btn">
+                    <span class="icon">📊</span> Leaderboard
+                </button>
+                <button class="menu-btn profile-btn">
+                    <span class="icon">👤</span> Profile
+                </button>
+            </div>
+        </div>
+        
+        <!-- Battle Screen -->
+        <div class="battle-screen hidden" id="battleScreen">
+            <div class="battle-header">
+                <div class="battle-timer">
+                    <span class="timer-text">10</span>
+                </div>
+                <div class="round-info">
+                    <h2>Round <span id="currentRound">1</span> of <span id="totalRounds">3</span></h2>
+                </div>
+                <div class="score-display">
+                    <span class="player-score">0</span>
+                    <span class="vs">VS</span>
+                    <span class="opponent-score">0</span>
+                </div>
+            </div>
+            
+            <div class="battle-arena">
+                <div class="player-side">
+                    <div class="player-card">
+                        <img src="img/avatars/default.png" alt="You" class="avatar">
+                        <h3 class="player-name">You</h3>
+                        <div class="player-rank">Bronze III</div>
+                    </div>
+                    <div class="choice-display player-choice">
+                        <div class="choice-icon">?</div>
+                    </div>
+                </div>
+                
+                <div class="battle-effects">
+                    <div class="vs-text">VS</div>
+                    <div class="result-text hidden"></div>
+                </div>
+                
+                <div class="opponent-side">
+                    <div class="opponent-card">
+                        <img src="img/avatars/default.png" alt="Opponent" class="avatar">
+                        <h3 class="opponent-name">Opponent</h3>
+                        <div class="opponent-rank">Bronze III</div>
+                    </div>
+                    <div class="choice-display opponent-choice">
+                        <div class="choice-icon">?</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="choice-buttons">
+                <button class="choice-btn" data-choice="rock">
+                    <div class="choice-emoji">🪨</div>
+                    <span>Rock</span>
+                </button>
+                <button class="choice-btn" data-choice="paper">
+                    <div class="choice-emoji">📄</div>
+                    <span>Paper</span>
+                </button>
+                <button class="choice-btn" data-choice="scissors">
+                    <div class="choice-emoji">✂️</div>
+                    <span>Scissors</span>
+                </button>
+            </div>
+            
+            <div class="emote-wheel">
+                <button class="emote-btn" data-emote="thumbsup">👍</button>
+                <button class="emote-btn" data-emote="cry">😭</button>
+                <button class="emote-btn" data-emote="laugh">😂</button>
+                <button class="emote-btn" data-emote="angry">😠</button>
+            </div>
+        </div>
+        
+        <!-- Matchmaking Screen -->
+        <div class="matchmaking-screen hidden" id="matchmakingScreen">
+            <div class="matchmaking-content">
+                <h2>Finding Opponent...</h2>
+                <div class="search-animation">
+                    <div class="radar-sweep"></div>
+                    <div class="player-dots">
+                        <div class="dot player"></div>
+                        <div class="dot opponent"></div>
+                    </div>
+                </div>
+                <p class="search-time">Time: <span id="searchTime">0:00</span></p>
+                <p class="players-online">12,458 players online</p>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+        
+        <!-- Victory/Defeat Screen -->
+        <div class="result-screen hidden" id="resultScreen">
+            <div class="result-content">
+                <h1 class="result-title">VICTORY!</h1>
+                <div class="result-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Score</span>
+                        <span class="stat-value">3 - 1</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">XP Gained</span>
+                        <span class="stat-value">+150</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Coins Earned</span>
+                        <span class="stat-value">+50 🪙</span>
+                    </div>
+                </div>
+                <div class="result-rewards">
+                    <h3>Rewards</h3>
+                    <div class="reward-items">
+                        <!-- Rewards will be added dynamically -->
+                    </div>
+                </div>
+                <div class="result-buttons">
+                    <button class="play-again-btn">Play Again</button>
+                    <button class="main-menu-btn">Main Menu</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Currency Display -->
+        <div class="currency-display">
+            <div class="currency-item coins">
+                <span class="currency-icon">🪙</span>
+                <span class="currency-amount" id="coinsAmount">1,000</span>
+            </div>
+            <div class="currency-item gems">
+                <span class="currency-icon">💎</span>
+                <span class="currency-amount" id="gemsAmount">100</span>
+                <button class="add-gems">+</button>
+            </div>
+        </div>
+        
+        <!-- Daily Rewards Notification -->
+        <div class="daily-rewards-notif hidden">
+            <span class="notif-icon">🎁</span>
+            <span>Daily rewards available!</span>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/multiplayer-client-simple.js"></script>
+</body>
+</html>

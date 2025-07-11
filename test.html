@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RPS Test</title>
+    <style>
+        #testCanvas {
+            border: 2px solid red;
+            display: block;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Canvas Test</h1>
+    <canvas id="testCanvas" width="800" height="600"></canvas>
+    
+    <script>
+        console.log('Test page loaded');
+        
+        const canvas = document.getElementById('testCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Draw something
+        ctx.fillStyle = 'white';
+        ctx.font = '30px Arial';
+        ctx.fillText('Canvas is working!', 250, 300);
+        
+        // Draw a circle
+        ctx.fillStyle = 'red';
+        ctx.beginPath();
+        ctx.arc(400, 300, 50, 0, Math.PI * 2);
+        ctx.fill();
+    </script>
+</body>
+</html>
